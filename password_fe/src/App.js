@@ -1,27 +1,26 @@
-import './App.css';
+// src/App.js
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route, Link, useNavigate } from 'react-router-dom';
-import Home from './Home';
-import Register from './Register';
-import Login from './Login';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import Register from './components/Register';
+import Login from './components/Login';
+import PasswordOverview from './components/PasswordOverview';
+import './Style.css'
+
+
 
 function App() {
-    return (
-        <Router>
-            <div className="App">
-                <header className="App-header">
-                    <nav>
-                        <Link to="/">Home</Link> | <Link to="/register">Registrieren</Link> | <Link to="/login">Anmelden</Link>
-                    </nav>
-                </header>
-                <Routes>
-                    <Route path="/" element={<Home />} />
-                    <Route path="/register" element={<Register />} />
-                    <Route path="/login" element={<Login />} />
-                </Routes>
-            </div>
-        </Router>
-    );
+  return (
+    <BrowserRouter> {/* Verwende BrowserRouter statt Router */}
+      <div>
+        <Routes>
+          <Route path="/register" element={<Register />} /> {/* Verwende element statt component */}
+          <Route path="/login" element={<Login />} />
+          <Route path="/passwords" element={<PasswordOverview />} />
+          <Route path="/" element={<Login />} /> {/* Verwende element statt component */}
+        </Routes>
+      </div>
+    </BrowserRouter>
+  );
 }
 
 export default App;
